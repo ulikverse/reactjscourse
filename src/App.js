@@ -3,20 +3,20 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <User name="Ulik" age={27} email="ulik@ulik.com" />
-      <User name="Jake" age={29} email="jake@ulik.com" />
-      <User name="Jessica" age={190} email="jessica@ulik.com" />
+      <Job salary={90000} position="Senior SDE" company="Amazon" />
+      <Job salary={12000} position="Junior SDE" company="Google" />
+      <Job salary={10000} position="Project Manager" company="Netflix" />
     </div>
   );
 }
 
-const User = (props) => {
+const Job = (props) => {
   return (
     <div>
       <div>
-        <h1>{props.name}</h1>
-        <h1>{props.age}</h1>
-        <h1>{props.email}</h1>
+        <h1>{props.salary}</h1>
+        <h1>{props.position}</h1>
+        <h1>{props.company}</h1>
       </div>
     </div>
   );
