@@ -1,18 +1,18 @@
 import "./App.css";
-import { User } from "./User";
+import { useState } from "react";
 
 function App() {
-  const users = [
-    { name: "Pedro", age: 21 },
-    { name: "Jake", age: 25 },
-    { name: "Jessica", age: 45 },
-  ];
-
+  const [textColor, setTextColor] = useState("black");
   return (
     <div className="App">
-      {users.map((user, key) => {
-        return <User name={user.name} age={user.age} />;
-      })}
+      <button
+        onClick={() => {
+          setTextColor(textColor === "black" ? "red" : "black");
+        }}
+      >
+        Show/Hide
+      </button>
+      <h1 style={{ color: textColor }}>HI MY NAME IS ULIK</h1>
     </div>
   );
 }
