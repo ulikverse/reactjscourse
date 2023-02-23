@@ -3,27 +3,30 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Profile } from "./pages/Profile";
 import { Contact } from "./pages/Contact";
-import { Error } from "./pages/Error";
 import { Navbar } from "./Navbar";
-import { useState, createContext } from "react";
-
-export const AppContect = createContext();
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
-  const [username, setUsername] = useState("UlikTech");
+  const client = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: true,
+      },
+    },
+  });
   return (
     <div className="App">
-      <AppContect.Provider value={{ username, setUsername }}>
+      <QueryClientProvider client={client}>
         <Router>
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<Error />} />
+            <Route path="*" element={<h1> PAGE NOT FOUND</h1>} />
           </Routes>
         </Router>
-      </AppContect.Provider>
+      </QueryClientProvider>
     </div>
   );
 }
